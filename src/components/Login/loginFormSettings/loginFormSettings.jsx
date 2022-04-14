@@ -15,10 +15,10 @@ export const loginSchema = Yup.object().shape({
 export const logInHandleError = (errors) => {
   return {
     email: () => {
-      return <div>{errors.email}</div>;
+      return errors.email && <div className="login-form__error">{errors.email}</div> 
     },
     password: () => {
-      return <div>{errors.password}</div>;
+      return errors.password && <div className="login-form__error">{errors.password}</div>;
     },
   };
 };

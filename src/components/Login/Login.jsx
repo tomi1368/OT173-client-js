@@ -10,7 +10,7 @@ import {Link, useNavigate} from "react-router-dom"
 import "./Login.scss";
 
 const Login = () => {
-  const navigate = useNavigate()
+ /*  const navigate = useNavigate() */
   const [error,setErorr] = useState(null)
   return (
     <>
@@ -26,7 +26,7 @@ const Login = () => {
         <Formik
           initialValues={initialLoginValue}
           validationSchema={loginSchema}
-          onSubmit={(formValue)=>loginRequest(formValue,navigate,setErorr)}
+          onSubmit={(formValue)=>loginRequest(formValue,setErorr)}
           validateOnChange={false}
           validateOnMount={false}
         >
