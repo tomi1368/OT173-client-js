@@ -1,13 +1,18 @@
 import axios from "axios"
-export const loginRequest = async (formValue,navigate)=>{
+export const loginRequest = async ({formValue,navigate,setError})=>{
 
     try{
         /* navigate una vez hago login voy a inicio */
         /* Falta link de api */
         const loginResponse = await axios.post("",formValue)
+        /* Guardo la respuesta en localstroge o redux  */
+        /* navigate("/") */
     }catch(err){
         /* Manejar estado de error */
-        console.log(err)
+        setError(true)
+        setTimeout(()=>{
+            setError(null)
+        },2000 )
     }
 
 
