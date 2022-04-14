@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react"
 import { Formik, Field, Form } from "formik";
 import {
   initialLoginValue,
@@ -6,24 +6,29 @@ import {
   logInHandleError,
 } from "./loginFormSettings/loginFormSettings";
 import { loginRequest } from "./loginFormSettings/loginRequest";
+import {Link, useNavigate} from "react-router-dom"
 import "./Login.scss";
 
 const Login = () => {
+  const navigate = useNavigate()
+  const [error,setErorr] = useState(null)
   return (
+    <>
+    {error && <div className="error-tologin">Error to login</div>}
     <div className="login-wrapper">
       <div className="login">
-        <div className="login-img">
+        <Link to={"/"} className="login-img">
           <img
             src="https://i.ibb.co/7Qcvm6c/LOGO-SOMOS-MAS.png"
             alt=""
           />
-        </div>
+        </Link>
         <Formik
           initialValues={initialLoginValue}
           validationSchema={loginSchema}
-          onSubmit={loginRequest}
+          onSubmit={(formValue)=>loginRequest(formValue,navigate,setErorr)}
           validateOnChange={false}
-          validateOnBlur={false}
+          validateOnMount={false}
         >
           {({ errors }) => {
             return (
@@ -55,6 +60,7 @@ const Login = () => {
         </Formik>
       </div>
     </div>
+    </>
   );
 };
 
