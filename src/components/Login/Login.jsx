@@ -6,28 +6,29 @@ import {
   logInHandleError,
 } from "./loginFormSettings/loginFormSettings";
 import { loginRequest } from "./loginFormSettings/loginRequest";
-import {Link, useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import "./Login.scss";
 
 const Login = () => {
  /*  const navigate = useNavigate() */
-  const [error,setErorr] = useState(null)
+  const [error,setError] = useState(null)
   return (
     <>
     {error && <div className="error-tologin">Error to login</div>}
     <div className="login-wrapper">
       <div className="login">
-        <Link to={"/"} className="login-img">
+        <div className="login-img">
           <img
             src="https://i.ibb.co/7Qcvm6c/LOGO-SOMOS-MAS.png"
             alt=""
           />
-        </Link>
+        </div>
         <Formik
           initialValues={initialLoginValue}
           validationSchema={loginSchema}
-          onSubmit={(formValue)=>loginRequest(formValue,setErorr)}
+          onSubmit={(formValue)=>loginRequest(formValue,setError)}
           validateOnChange={false}
+          validateOnBlur={false}
           validateOnMount={false}
         >
           {({ errors }) => {

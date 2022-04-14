@@ -1,6 +1,5 @@
 import axios from "axios"
-export const loginRequest = async ({formValue,navigate,setError})=>{
-
+export const loginRequest = async (formValue,setError)=>{
     try{
         /* navigate una vez hago login voy a inicio */
         /* Falta link de api */
@@ -12,7 +11,7 @@ export const loginRequest = async ({formValue,navigate,setError})=>{
         setError(true)
         setTimeout(()=>{
             setError(null)
-        },2000 )
+        },5000 )
     }
 
 
