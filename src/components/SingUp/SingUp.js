@@ -7,6 +7,8 @@ import {
 	__INITIAL_VALUES_SINGUP_FORM__,
 } from "./SingUpFormSettings";
 
+import styles from "./SingUp.module.css";
+
 const SingUp = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 
@@ -22,41 +24,49 @@ const SingUp = () => {
 	};
 
 	return (
-		<Formik
-			initialValues={__INITIAL_VALUES_SINGUP_FORM__}
-			validationSchema={SingUpFormSchema}
-			onSubmit={handleSubmit}
-		>
-			{({ isSubmitting }) => (
-				<Form>
-					<Field type="text" name="firstName" placeholder="Nombre" />
-					<ErrorMessage name="firstName">
-						{(error) => <div>{error}</div>}
-					</ErrorMessage>
+		<section className={styles.sing_up}>
+			<h1 className={styles.title}>Formulario de registro</h1>
 
-					<Field type="text" name="lastName" placeholder="Apellido" />
-					<ErrorMessage name="lastName">
-						{(error) => <div>{error}</div>}
-					</ErrorMessage>
+			<Formik
+				initialValues={__INITIAL_VALUES_SINGUP_FORM__}
+				validationSchema={SingUpFormSchema}
+				onSubmit={handleSubmit}
+			>
+				{({ isSubmitting }) => (
+					<Form className={styles.form}>
+						<Field type="text" name="firstName" placeholder="Nombre" />
+						<ErrorMessage name="firstName">
+							{(error) => <div className={styles.error}>{error}</div>}
+						</ErrorMessage>
 
-					<Field type="email" name="email" placeholder="Email" />
-					<ErrorMessage name="email">
-						{(error) => <div>{error}</div>}
-					</ErrorMessage>
+						<Field type="text" name="lastName" placeholder="Apellido" />
+						<ErrorMessage name="lastName">
+							{(error) => <div className={styles.error}>{error}</div>}
+						</ErrorMessage>
 
-					<Field type="password" name="password" placeholder="Contraseña" />
-					<ErrorMessage name="password">
-						{(error) => <div>{error}</div>}
-					</ErrorMessage>
+						<Field type="email" name="email" placeholder="Email" />
+						<ErrorMessage name="email">
+							{(error) => <div className={styles.error}>{error}</div>}
+						</ErrorMessage>
 
-					{errorMessage && <div>{errorMessage}</div>}
+						<Field type="password" name="password" placeholder="Contraseña" />
+						<ErrorMessage name="password">
+							{(error) => <div className={styles.error}>{error}</div>}
+						</ErrorMessage>
 
-					<button type="submit" disabled={isSubmitting}>
-						Enviar
-					</button>
-				</Form>
-			)}
-		</Formik>
+						{errorMessage && <div className={styles.error}>{errorMessage}</div>}
+
+						<button
+							type="submit"
+							className={styles.submit}
+							disabled={isSubmitting}
+						>
+							{isSubmitting ? "Enviando..." : "Registrarme"}
+						</button>
+					</Form>
+				)}
+			</Formik>
+		</section>
 	);
 };
 
