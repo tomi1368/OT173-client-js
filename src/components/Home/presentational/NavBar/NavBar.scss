@@ -20,6 +20,13 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            cursor: pointer;
+            &--link{
+                transition: color .3s ease-in-out;
+                &:hover{
+                    color: #18a0fb;
+                }
+            }
         }
         &--btns{
             display: flex;
@@ -32,11 +39,23 @@
                     border: 1px solid #18a0fb;
                     background-color: transparent;
                     color: #18a0fb;
+                    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #18a0fb;
+                        color: #fff;
+                    }
                 }
                 &.sign-btn{
                     color: #fff;
-                    border: none;
+                    border: 1px solid #18a0fb;
                     background-color: #18a0fb;
+                    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: transparent;
+                        color: #18a0fb;
+                    }
                 }
             }
         }
